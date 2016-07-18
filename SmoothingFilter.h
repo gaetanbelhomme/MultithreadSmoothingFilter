@@ -28,6 +28,9 @@ public:
     typedef typename TImage::SizeType                       SizeType;
 
 
+    typedef typename SuperClass::OutputImageRegionType OutputImageRegionType;
+    typedef typename itk::ThreadIdType ThreadIdType;
+
     /** Method for creation through the object factory  */
     itkNewMacro(Self)
 
@@ -44,7 +47,7 @@ protected:
     SmoothingFilter();
 
     /** Does the real work */
-    virtual void GenerateData();
+    virtual void ThreadedGenerateData(const OutputImageRegionType& region, ThreadIdType threadId);
 
 private:
 

@@ -13,7 +13,7 @@ SmoothingFilter<TImage>::SmoothingFilter(): NbNeighbours(4)
 
 
 template<typename TImage>
-void SmoothingFilter<TImage>::GenerateData(){
+void SmoothingFilter<TImage>::ThreadedGenerateData(const OutputImageRegionType& region, ThreadIdType threadId){
 
 
     /** Pointers intialisation */
@@ -27,10 +27,10 @@ void SmoothingFilter<TImage>::GenerateData(){
     output->Allocate();*/
 
     /** Pointers and iterators link */
-    Iterator outputIterator(output, output->GetRequestedRegion());
-    ConstIterator inputIterator(input, input->GetRequestedRegion());
+    Iterator outputIterator(output, region);
+    ConstIterator inputIterator(input, region);
 
-    SizeType size = input->GetRequestedRegion().GetSize();
+    SizeType size = input->GetLargestPossibleRegion().GetSize();
     TIndex limit = inputIterator.GetIndex()+size;
     /** Init mean, mean of 4 neighbours and current pixel */
     TPixel mean;

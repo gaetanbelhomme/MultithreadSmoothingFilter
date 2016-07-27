@@ -52,9 +52,10 @@ void SmoothingFilter<TImage>::ThreadedGenerateData(const OutputImageRegionType& 
 
             /** Mean - 8 Neighbours */
             if(NbNeighbours == 8)
-                //mean = Neighbours_8(input, inputIterator);
+            {
+                mean = Neighbours_8(input, inputIterator);
 
-
+            }
 
 
             outputIterator.Set(mean);
@@ -79,7 +80,7 @@ void SmoothingFilter<TImage>::ThreadedGenerateData(const OutputImageRegionType& 
 template<typename TImage>
 typename TImage::PixelType SmoothingFilter<TImage>::Neighbours_4(ImageConstPointer input, ConstIterator inputIterator)
 {
-    TPixel mean = input->GetPixel(inputIterator.GetIndex());
+    int mean = input->GetPixel(inputIterator.GetIndex());
     TIndex PixelIndexCurrent;
     int count =1;
 
@@ -119,7 +120,7 @@ typename TImage::PixelType SmoothingFilter<TImage>::Neighbours_4(ImageConstPoint
 template<typename TImage>
 typename TImage::PixelType SmoothingFilter<TImage>::Neighbours_8(ImageConstPointer input, ConstIterator inputIterator)
 {
-    TPixel  mean=0;
+    int  mean=0;
     TIndex PixelIndexCurrent;
     PixelIndexCurrent = inputIterator.GetIndex();
 

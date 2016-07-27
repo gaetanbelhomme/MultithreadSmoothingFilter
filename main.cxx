@@ -1,9 +1,9 @@
 #include "SmoothingFilter.hxx"
-#include "../../ITK/Modules/IO/ImageBase/include/itkImageFileReader.h"
-#include "../../ITK/Modules/IO/ImageBase/include/itkImageFileWriter.h"
+#include "itkImageFileReader.h"
+#include "itkImageFileWriter.h"
 
-#include "../../ITK/Modules/Bridge/VtkGlue/include/QuickView.h"
-#include "../../ITK/Modules/Core/Common/include/itkRGBPixel.h"
+#include "QuickView.h"
+#include "itkRGBPixel.h"
 #include "itkConstantBoundaryCondition.h"
 
 
